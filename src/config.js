@@ -1,4 +1,4 @@
-import console from "node:console";
+const console = require("node:console");
 
 function getGuacQlServerUrl() {
   let url = process.env.GUACGQL_SERVER_URL;
@@ -11,5 +11,9 @@ function getGuacQlServerUrl() {
 }
 
 const GUACGQL_SERVER_URL = getGuacQlServerUrl();
-export const GUACGQL_SERVER_QUERY_URL = new URL(GUACGQL_SERVER_URL + "/query");
-export const GUACGQL_SERVER_VERSION_URL = new URL(GUACGQL_SERVER_URL + "/version");
+
+module.exports = {
+  GUACGQL_SERVER_QUERY_URL: new URL(GUACGQL_SERVER_URL + "/query"),
+  GUACGQL_SERVER_VERSION_URL: new URL(GUACGQL_SERVER_URL + "/version"),
+  GUACGQL_PROXY_PATH: "/api/graphql",
+};
